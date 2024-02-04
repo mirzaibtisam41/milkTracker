@@ -5,6 +5,6 @@ const {
 } = require('../controllers/milkController');
 
 route.post('/', addMilkDetails);
-route.get('/', getMilkDetailsByCurrentMonthAndYear);
+route.post('/find', getMilkDetailsByCurrentMonthAndYear);
 
 module.exports = route;
