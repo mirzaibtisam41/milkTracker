@@ -22,4 +22,17 @@ module.exports = class MilkServices {
       return {success: false, error};
     }
   }
+
+  static async updateMilkDetail({id, data}) {
+    try {
+      const res = await MilkModel.findByIdAndUpdate(
+        {_id: id},
+        {$set: data},
+        {new: true}
+      );
+      return {success: true, updatedMilkData: res};
+    } catch (error) {
+      return {success: false, error};
+    }
+  }
 };

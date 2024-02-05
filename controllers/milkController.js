@@ -35,4 +35,24 @@ module.exports = class MilkControllers {
         .json({msg: 'Data get successfully', body: milkDataList});
     }
   }
+
+  static async updateMilkDetail(req, res) {
+    const data = req.body;
+    const {id} = req.params;
+    const {success, updatedMilkData, error} =
+      await MilkServices.updateMilkDetail({
+        id,
+        data,
+      });
+
+    if (error) {
+      return res.status(400).json({error: 'Data not updated successfully'});
+    }
+
+    if (success) {
+      return res
+        .status(200)
+        .json({msg: 'Data updated successfully', body: updatedMilkData});
+    }
+  }
 };
